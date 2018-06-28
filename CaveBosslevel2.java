@@ -116,13 +116,13 @@ public class CavesBossLevel2 extends Level {
 
 		map = MAP_START.clone();
 
-		Foliage light = (Foliage)level.blobs.get( Foliage.class );
+		Foliage light = (Foliage) Dungeon.level.blobs.get( Foliage.class );
 		if (light == null) {
 			light = new Foliage();
 		}
 		for (int i= gardenTop + 1; i < gardenBottom; i++) {
 			for (int j= gardebLeft + 1; j < gardenRight; j++) {
-				light.seed( level, j + level.width() * i, 1 );
+				light.seed( Dungeon.level, j + Dungeon.level.width() * i, 1 );
 			}
 		}
 
