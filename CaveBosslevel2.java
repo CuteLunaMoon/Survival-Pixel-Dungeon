@@ -59,20 +59,20 @@ public class CavesBossLevel2 extends Level {
 	private static final int WIDTH = 32;
 	private static final int HEIGHT = 32;
 
-	private static final int ROOM_LEFT		= WIDTH / 2 - 3;
-	private static final int ROOM_RIGHT		= WIDTH / 2 + 1;
-	private static final int ROOM_TOP		= HEIGHT / 2 - 2;
-	private static final int ROOM_BOTTOM	= HEIGHT / 2 + 2;
+	private static final int ROOM_LEFT		= 7;
+	private static final int ROOM_RIGHT		= 12;
+	private static final int ROOM_TOP		= 11;
+	private static final int ROOM_BOTTOM		= 16;
 	private static final int gardenTop = 21;
 	private static final int gardenBottom = 24;
 
 	private static final int gardenLeft = 20;
 
 	private static final int gardenRight = 20;
-	//private static final int secret door = 23;
+	
 
 
-	private int arenaDoor;
+	private int arenaDoor = 13*32+7;
 	private boolean enteredArena = false;
 	private boolean keyDropped = false;
 	
@@ -109,9 +109,9 @@ public class CavesBossLevel2 extends Level {
 	@Override
 	protected boolean build() {
 		
-		setSize(WIDTH, HEIGHT);
+		setSize(32, 32);
 
-		//Rect space = new Rect();
+		
 
 
 		map = MAP_START.clone();
@@ -144,10 +144,11 @@ public class CavesBossLevel2 extends Level {
 
 	private static final int M = Terrain.WALL_DECO;
 	private static final int P = Terrain.PEDESTAL;
-	private static final int B = Terrian.BOOKSHELF;
-        private static final int G = Terrian.HIGH_GRASS;
-	private static final int f = Terrian.WATER;
-
+	private static final int B = Terrain.BOOKSHELF;
+        private static final int G = Terrain.HIGH_GRASS;
+	private static final int f = Terrain.WATER;
+	private static final int H = Terrain.HIDDEN_DOOR; 
+	private static final int C = Terrain.CHASM;
 
 
 	// I store this static map this here
@@ -156,10 +157,10 @@ public class CavesBossLevel2 extends Level {
 					W, W, f, f, f, e, e, e, T, T, T, T, T, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
 					W, W, f, f, e, e, e, e, e, T, T, T, e, e, e, W, W, W, W, M, M, G, G, G, W, W, W, W, W, W, W, W,
 					W, W, f, e, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W, f, f, f, f, G, G, W, W, W, W, W, W, W,
-					W, W, e, e, e, e, e, e, e, e, e, e, T, W, W, W, W, W, G, f, f, f, f, G, G, W, W, W, W, W, W, W,
-					W, W, T, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W, f, f, f, f, G, G, W, W, W, W, W, W, W,
-					W, W, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W, W, f, f, f, f, G, G, W, W, W, W, W, W, W,
-					W, W, e, e, T, e, e, e, T, W, W, W, W, W, W, W, W, W, W, f, f, f, f, G, G, W, W, W, W, W, W, W,
+					W, W, e, W, e, e, e, e, e, e, e, e, T, e, 3, W, W, W, G, f, f, f, f, G, G, W, W, W, W, W, W, W,
+					W, W, T, W, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W, f, f, f, f, G, G, W, W, W, W, W, W, W,
+					W, W, e, W, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W, f, f, f, f, G, G, W, W, W, W, W, W, W,
+					W, W, W, W, W, T, e, T, W, W, W, W, W, W, W, W, W, W, W, f, f, f, f, G, G, W, W, W, W, W, W, W,
 					W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W, f, f, f, f, W, W, W, W, W, W, W, W, W,
 					W, e, e, e, e, e, e, e, e, e, e, e, e, e, T, W, W, W, W, f, f, f, f, W, W, W, W, W, W, W, W, W,
 					W, e, e, e, e, e, T, e, e, e, e, e, e, T, e, W, W, W, W, f, G, W, W, W, W, W, W, W, W, W, W, W,
@@ -167,7 +168,7 @@ public class CavesBossLevel2 extends Level {
 					W, f, e, e, e, e, W, e, e, E, W, G, e, e, e, T, W, W, W, f, W, W, W, W, W, W, W, W, W, W, W, W,
 					W, f, e, e, e, T, W, e, e, e, W, G, e, e, e, e, W, W, W, f, W, W, W, W, W, W, W, W, W, W, W, W,
 					W, f, e, e, e, T, D, e, e, e, W, G, e, e, e, e, W, W, W, f, G, W, W, W, W, W, W, W, W, W, W, W,
-					W, f, e, e, e, T, W, W, W, W, W, G, e, e, T, W, W, W, W, f, W, W, W, W, W, W, W, W, W, W, W, W,
+					W, f, e, e, e, T, W, W, W, W, W, G, e, e, T, W, W, W, W, D, W, W, W, W, W, W, W, W, W, W, W, W,
 					W, f, T, e, e, e, e, e, e, e, G, e, e, e, e, W, W, W, W, f, W, W, W, W, W, W, W, W, W, W, W, W,
 					W, e, e, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W, f, W, W, W, W, W, W, W, W, W, W, W, W,
 					W, e, e, e, W, e, e, e, e, T, e, e, e, W, W, W, W, W, W, f, W, W, W, W, W, W, W, W, W, W, W, W,
@@ -175,13 +176,13 @@ public class CavesBossLevel2 extends Level {
 					W, f, f, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W, f, f, f, f, f, W, W, W, W, W, W, W, W,
 					W, f, f, f, e, e, e, e, e, T, e, W, W, W, W, W, W, W, W, G, G, G, G, f, W, W, W, W, W, W, W, W,
 					W, f, f, f, f, f, e, e, W, W, W, W, W, W, W, B, B, B, W, G, G, G, G, f, W, W, W, W, W, W, W, W,
-					W, W, W, W, W, L, W, W, W, W, W, W, W, W, W, B, e, e, e, G, G, G, G, f, W, W, W, W, W, W, W, W,
-					W, W, W, W, W, T, W, W, W, W, W, W, W, W, W, e, e, B, W, G, G, G, G, f, f, f, f, f, W, W, W, W,
-					W, W, W, W, W, e, W, W, W, W, W, W, W, W, W, D, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+					W, W, W, W, W, L, W, W, W, W, W, W, W, W, W, B, e, e, H, G, G, G, G, f, W, W, W, W, W, W, W, W,
+					W, W, W, W, W, T, W, W, W, W, W, W, W, W, W, e, e, B, W, G, G, G, G, f, f, f, D, f, f, f, W, W,
+					W, W, W, W, W, e, W, W, W, W, W, W, W, W, W, H, W, W, W, W, W, W, W, W, W, W, W, W, W, f, W, W,
 					W, W, W, T, T, T, T, T, W, B, B, B, B, W, B, e, e, B, B, B, B, W, e, e, e, W, W, W, W, W, W, W,
 					W, W, W, T, T, T, T, T, W, B, e, P, B, W, e, e, e, e, B, B, B, W, e, e, e, W, W, W, W, W, W, W,
-					W, e, D, T, T, T, T, T, W, B, e, e, B, W, e, e, e, e, B, B, e, D, e, e, e, W, W, W, W, W, W, W,
-					W, W, W, T, T, T, T, T, L, e, e, e, e, D, e, e, e, e, B, B, B, W, e, e, e, W, W, W, W, W, W, W,
+					W, e, H, T, T, T, T, T, W, B, e, e, B, W, e, e, e, e, B, B, e, H, e, e, e, W, W, W, W, W, W, W,
+					W, W, W, T, T, T, T, T, L, e, e, e, e, H, e, e, e, e, B, B, B, W, e, e, e, W, W, W, W, W, W, W,
 					W, W, W, T, T, T, T, T, W, B, B, B, B, W, B, B, e, B, B, B, B, W, e, e, e, W, W, W, W, W, W, W,
 					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W};
 
@@ -199,6 +200,7 @@ public class CavesBossLevel2 extends Level {
 	public Actor respawner() {
 		return null;
 	}
+/*
 	
 	@Override
 	protected void createItems() {
@@ -211,6 +213,7 @@ public class CavesBossLevel2 extends Level {
 			drop( item, pos ).type = Heap.Type.REMAINS;
 		}
 	}
+
 	
 	@Override
 	public int randomRespawnCell() {
@@ -220,6 +223,8 @@ public class CavesBossLevel2 extends Level {
 		}
 		return cell;
 	}
+*/
+
 	
 	@Override
 	public void press( int cell, Char hero ) {
@@ -230,8 +235,8 @@ public class CavesBossLevel2 extends Level {
 			
 			enteredArena = true;
 			seal();
-			drop(new IronKey(1), 35);
-			drop(new IronKey(1), 35);
+			drop(new IronKey(1), 32*28+2);
+			drop(new IronKey(1), 32*6+3);
 
 			
 			for (Mob m : mobs){
@@ -245,12 +250,7 @@ public class CavesBossLevel2 extends Level {
 			
 			DM300 boss = new DM300();
 			boss.state = boss.WANDERING;
-			do {
-				boss.pos = Random.Int( length() );
-			} while (
-				!passable[boss.pos] ||
-				!outsideEntraceRoom( boss.pos ) ||
-				heroFOV[boss.pos]);
+			boss.pos = 35; //static spawn 
 			GameScene.add( boss );
 			
 			set( arenaDoor, Terrain.WALL );
