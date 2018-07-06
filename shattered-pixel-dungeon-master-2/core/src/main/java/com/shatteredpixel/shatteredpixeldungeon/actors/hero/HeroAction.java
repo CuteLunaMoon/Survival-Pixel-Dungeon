@@ -52,6 +52,13 @@ public class HeroAction {
 		}
 	}
 	
+	 public static class Examine extends HeroAction {
+        	public Examine( int cell ) {
+            this.dst = cell;
+        	}
+   	 }
+
+	
 	public static class Interact extends HeroAction {
 		public NPC npc;
 		public Interact( NPC npc ) {
