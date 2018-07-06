@@ -49,16 +49,18 @@ public class ShieldHuntsmen extends Mob {
 	@Override
 	public int attackProc( Char enemy, int damage ) {
 		damage = super.attackProc( enemy, damage );
-		if (Random.Int( 2 ) == 0) {
 		
-			for (int i  : PathFinder.NEIGHBOURS8){
+		// DOESN'T KNOW IF THIS WORK SO DISABLE THIS FOR NOW
+		//if (Random.Int( 2 ) == 0) {
 		
-				Ballistica trajectory = new Ballistica(enemy.pos, enemy.pos + i, Ballistica.MAGIC_BOLT);
+		//	for (int i  : PathFinder.NEIGHBOURS8){
 		
-				throwChar(enemy, trajectory, 2);
+		//		Ballistica trajectory = new Ballistica(enemy.pos, enemy.pos + i, Ballistica.MAGIC_BOLT);
 		
-			}
-		}
+		//		throwChar(enemy, trajectory, 2);
+		
+		//	}
+		//}
 
 		if (enemy == Dungeon.hero) {
 			
