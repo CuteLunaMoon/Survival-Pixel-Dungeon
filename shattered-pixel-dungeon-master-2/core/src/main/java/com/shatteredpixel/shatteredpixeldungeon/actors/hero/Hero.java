@@ -72,6 +72,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.keys.CrystalKey;
 import com.shatteredpixel.shatteredpixeldungeon.items.keys.GoldenKey;
 import com.shatteredpixel.shatteredpixeldungeon.items.keys.IronKey;
 import com.shatteredpixel.shatteredpixeldungeon.items.keys.Key;
+import com.shatteredpixel.shatteredpixeldungeon.levels.features.Bookshelf;
 import com.shatteredpixel.shatteredpixeldungeon.items.keys.SkeletonKey;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.Potion;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfMight;
@@ -535,7 +536,12 @@ public class Hero extends Char {
 
 				return actOpenChest( (HeroAction.OpenChest)curAction );
 				
-			} else
+			} else 
+			if( curAction instanceof HeroAction.Examine ){
+
+                	return actExamine( (HeroAction.Examine) curAction );
+
+            		}else
 			if (curAction instanceof HeroAction.Unlock) {
 
 				return actUnlock((HeroAction.Unlock) curAction);
@@ -1019,6 +1025,26 @@ public class Hero extends Char {
 
 		visibleEnemies = visible;
 	}
+	 private boolean actExamine( HeroAction.Examine action ){
+
+        int dest = action.dst;
+        if( Level.adjacent( pos, dest ) ){
+
+            spend( Hero.TIME_TO_SEARCH );
+            sprite.operate( dest );
+
+            return false;
+
+        } else if( getCloser( dest ) ){
+
+            return true;
+
+        } else {
+            ready();
+            return false;
+        }
+    }
+
 	
 	public int visibleEnemies() {
 		return visibleEnemies.size();
@@ -1138,6 +1164,10 @@ public class Hero extends Char {
 		if (Dungeon.level.map[cell] == Terrain.ALCHEMY && cell != pos) {
 			
 			curAction = new HeroAction.Alchemy( cell );
+		}else if( Dungeon.level.map[ cell ] == Terrain.BOOKSHELF ){
+
+          	  curAction = new HeroAction.Examine( cell );
+
 			
 		} else if (fieldOfView[cell] && (ch = Actor.findChar( cell )) instanceof Mob) {
 
@@ -1467,6 +1497,11 @@ public class Hero extends Char {
 			Level.set( doorCell, door == Terrain.LOCKED_DOOR ? Terrain.DOOR : Terrain.UNLOCKED_EXIT );
 			GameScene.updateMap( doorCell );
 			spend( Key.TIME_TO_UNLOCK );
+			 else if( curAction instanceof HeroAction.Examine ){
+
+        		    int cell = ( (HeroAction.Examine) curAction ).dst;
+	
+         			   Bookshelf.examine( cell );
 			
 		} else if (curAction instanceof HeroAction.OpenChest) {
 
