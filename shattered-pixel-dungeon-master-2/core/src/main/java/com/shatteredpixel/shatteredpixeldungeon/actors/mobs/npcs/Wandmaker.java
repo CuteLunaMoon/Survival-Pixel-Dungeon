@@ -273,6 +273,31 @@ public class Wandmaker extends NPC {
 				wand2.cursed = false;
 				wand2.upgrade();
 				
+				// if lucky, his wands are at higher level, completely luck-based
+				int k = Random.Int(0,7);
+				switch(k){
+					case 1:{
+					wand1.upgrade();
+					wand2.upgrade();	
+					}
+						break;
+					case 2:{
+						wand1.upgrade();
+					wand2.upgrade();
+						wand1.upgrade();
+					wand2.upgrade();
+					}
+						break;
+					case 3:{
+						wand1.upgrade();
+					wand2.upgrade();
+						wand1.upgrade();
+					wand2.upgrade();
+						wand1.upgrade();
+					wand2.upgrade();
+					}
+						break;
+				}
 			}
 		}
 		
