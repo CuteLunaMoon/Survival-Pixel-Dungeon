@@ -24,7 +24,7 @@ package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
 public class Crossbow extends MeleeWeapon {
-	
+	protected boolean heavyCrossbow;
 	{
 		image = ItemSpriteSheet.CROSSBOW;
 		
@@ -35,7 +35,7 @@ public class Crossbow extends MeleeWeapon {
 	
 	@Override
 	public int max(int lvl) {
-		return  2*(tier) +    // 8 damage max
+		return  2*(tier) +    
 				lvl;     //+1 per level
 	}
 }
