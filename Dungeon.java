@@ -30,6 +30,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.MindVision;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Blacksmith;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.GuardCaptain;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Ghost;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Imp;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Wandmaker;
@@ -43,6 +44,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.rings.Ring;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.Scroll;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Notes;
 import com.shatteredpixel.shatteredpixeldungeon.levels.CavesBossLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.CavesBossLevel2;
 import com.shatteredpixel.shatteredpixeldungeon.levels.CavesLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.CityBossLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.CityLevel;
@@ -87,6 +89,7 @@ public class Dungeon {
 		UPGRADE_SCROLLS,
 		ARCANE_STYLI,
 
+/*
 		//Health potion sources
 		//enemies
 		SWARM_HP,
@@ -97,7 +100,7 @@ public class Dungeon {
 		//alchemy
 		COOKING_HP,
 		BLANDFRUIT_SEED,
-
+*/
 		//doesn't use Generator, so we have to enforce one armband drop here
 		THIEVES_ARMBAND,
 
@@ -153,19 +156,19 @@ public class Dungeon {
 			STRENGTH_POTIONS.count =    counts[0];
 			UPGRADE_SCROLLS.count =     counts[1];
 			ARCANE_STYLI.count =        counts[2];
-			SWARM_HP.count =            counts[3];
-			BAT_HP.count =              counts[4];
-			WARLOCK_HP.count =          counts[5];
-			SCORPIO_HP.count =          counts[6];
-			COOKING_HP.count =          counts[7];
-			BLANDFRUIT_SEED.count =     counts[8];
-			THIEVES_ARMBAND.count =     counts[9];
-			DEW_VIAL.count =            counts[10];
-			VELVET_POUCH.count =        counts[11];
-			SCROLL_HOLDER.count =       counts[12];
-			POTION_BANDOLIER.count =    counts[13];
-			MAGICAL_HOLSTER.count =     counts[14];
-			GUARD_HP.count =            counts[15];
+	//		SWARM_HP.count =            counts[3];
+	//		BAT_HP.count =              counts[4];
+	//		WARLOCK_HP.count =          counts[5];
+	//		SCORPIO_HP.count =          counts[6];
+	//		COOKING_HP.count =          counts[7];
+	//		BLANDFRUIT_SEED.count =     counts[8];
+			THIEVES_ARMBAND.count =     counts[3];
+			DEW_VIAL.count =            counts[4];
+			VELVET_POUCH.count =        counts[5];
+			SCROLL_HOLDER.count =       counts[6];
+			POTION_BANDOLIER.count =    counts[7];
+			MAGICAL_HOLSTER.count =     counts[8];
+	//		GUARD_HP.count =            counts[9];
 		}
 
 	}
@@ -229,6 +232,7 @@ public class Dungeon {
 		Wandmaker.Quest.reset();
 		Blacksmith.Quest.reset();
 		Imp.Quest.reset();
+		GuardCaptain.Quest.reset();
 
 		Generator.reset();
 		Generator.initArtifacts();
@@ -243,7 +247,6 @@ public class Dungeon {
 	public static boolean isChallenged( int mask ) {
 		return (challenges & mask) != 0;
 	}
-	
 	public static Level newLevel() {
 		
 		Dungeon.level = null;
@@ -285,48 +288,45 @@ public class Dungeon {
 		case 13:
 		case 14:
 		case 15:
-			
-		case 16:level = new SewerLevel();
+		case 16:level = new CaveLevel();
 			break;
-		case 17:level = new SewerBossLevel();
-			break;
-			
+		case 17:
 		case 18:
 		case 19:
-			
-		case 20:
-			
-		case 21:level = new CavesLevel();
+		case 20:level = new SewerLevel();
 			break;
-			
-		case 22:level = new CavesBossLevel();
+		case 21:level = new SewerBossLevel();
 			break;
+		case 22:
 		case 23:
 		case 24:
-			
 		case 25:
-			
-		case 26:
-			
-		case 27:
-			level = new CityLevel();
+		case 26:level = new CavesLevel();
 			break;
-		case 28:
-			level = new CityBossLevel();
-			break;
-		case 29:level = new LastShopLevel();
-			break;
+		case 27:level = new CavesBossLevel();
+			break;			
+		case 28:level = new CityLevel();
+			break;			
+		case 29:
 		case 30:
 		case 31:
 		case 32:
+				level = new CityBossLevel();
+				break;
 		case 33:
-		case 34:level = new HallsLevel();
+		level = new LastShopLevel();
 			break;
-		case 35:level = new HallsBossLevel();
+		case 34:
+		case 35:
+		case 36:
+		case 37:
+		case 38:level = new HallsLevel();
 			break;
-		case 36:level = new LastLevel();
+		case 39:level = new HallsBossLevel();
 			break;
-
+		case 40:level = new LastLevel();
+			break;
+		
 		default:
 			level = new DeadEndLevel();
 			Statistics.deepestFloor--;
@@ -361,16 +361,26 @@ public class Dungeon {
 	}
 	
 	public static boolean shopOnLevel() {
-		return depth == 1 || depth == 2 || depth == 3  ||depth == 4 || depth == 11 || depth == 16;
+		return depth == 1 || depth == 2 || depth == 3  ||depth == 4 ||depth == 5|| depth == 11 || depth == 16;
 	}
+
+	public static boolean gardenOnLevel(){
+		return depth == 2||depth ==16;
+	}
+    public static boolean clinicLevel(){
+        return depth == 1;
+    }
 	
 	public static boolean bossLevel() {
 		return bossLevel( depth );
 	}
 	
 	public static boolean bossLevel( int depth ) {
-		return depth == 6 || depth == 12 || depth == 17 || depth == 22 || depth =28 || depth == 35;
+		return depth == 6 || depth == 12 || depth == 17 || depth == 22 || depth ==28 || depth == 35;
 	}
+	
+
+
 	
 	@SuppressWarnings("deprecation")
 	public static void switchLevel( final Level level, int pos ) {
@@ -388,6 +398,10 @@ public class Dungeon {
 		Actor respawner = level.respawner();
 		if (respawner != null) {
 			Actor.addDelayed( respawner, level.respawnTime() );
+		}
+		Actor regrower = level.regrower();
+		if (regrower != null) {
+			Actor.addDelayed( regrower, level.regrowTime() );
 		}
 
 		hero.pos = pos;
@@ -503,6 +517,7 @@ public class Dungeon {
 			Ghost		.Quest.storeInBundle( quests );
 			Wandmaker	.Quest.storeInBundle( quests );
 			Blacksmith	.Quest.storeInBundle( quests );
+			GuardCaptain	.Quest.storeInBundle( quests );
 			Imp			.Quest.storeInBundle( quests );
 			bundle.put( QUESTS, quests );
 			

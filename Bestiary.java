@@ -42,24 +42,23 @@ public class Bestiary {
 			
 			// Sewers
 			case 1: default:
-
-			return new ArrayList<>(Arrays.asList(FetidRat2.class,
-						 GreatCrab2.class, SkullShaman.class);
+	//		return new ArrayList<>(Arrays.asList(WalkingMushroom.class,
+	//					 WalkingMushroom.class,WalkingMushroom.class,WalkingMushroom2.class,WalkingMushroom2.class, WalkingMushroom2.class));
 
 
 				//10x rat
-				//return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-				//		Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
-				//		Rat.class, Rat.class, Rat.class, Rat.class, Rat.class));
+				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
+					Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
+    				Rat.class, Rat.class, Rat.class, BrownBat.class , BrownBat.class));
 			case 2:
 				//3x rat, 1x gnoll, 3x goblin
 				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class, Rat.class,
-						Gnoll.class, Goblin.class, Goblin.class, Goblin.class));
+						Gnoll.class, Goblin.class, Goblin.class, Goblin.class,BrownBat.class));
 			case 3:
 				//2x rat, 2x gnoll, 1x crab, 1x swarm,  2x goblin
 				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class,
 						Gnoll.class, Gnoll.class, Goblin.class, Gnoll.class,
-						Crab.class, Swarm.class, Goblin.class));
+						Crab.class, Swarm.class, Goblin.class,BrownBat.class));
 			case 4:
 				//1x rat, 2x gnoll, 3x crab, 1x swarm, 2x goblin,
 				return new ArrayList<>(Arrays.asList(Rat.class,
@@ -71,7 +70,7 @@ public class Bestiary {
 				return new ArrayList<>(Arrays.asList(FetidRat2.class,
 						FetidRat2.class, FetidRat2.class,
 						Crab.class, Crab.class, Crab.class,
-						Skeleton.class, Goblin.class, GreatCrab2.class));
+						Skeleton.class, Goblin.class, GreatCrab2.class,BrownBat.class));
 
 
 				
@@ -106,123 +105,149 @@ public class Bestiary {
 						Thief.class,
 						Shaman.class, Shaman.class,
 						Guard.class, Guard.class, Guard.class));
-
+			//caves
+				case 13:
+				//5x bat, 1x brute, 1x Rat, 1x skull shaman
+				return new ArrayList<>(Arrays.asList(
+						Bat.class, Shaman.class, Bat.class,Bat.class,
+						Brute.class, Rat.class,SkullShaman.class));
+							case 14:
+				//5x bat, 1x brute, 1x Rat, 1x skull shaman
+				return new ArrayList<>(Arrays.asList(
+						Bat.class,  Bat.class,  Bat.class,
+						Brute.class, Rat.class,SkullShaman.class));
+							case 15:
+				//5x bat, 1x brute, 1x Rat, 1x skull shaman
+				return new ArrayList<>(Arrays.asList(
+						Bat.class, Bat.class, Bat.class,
+						Brute.class, Rat.class,SkullShaman.class));
+							case 16:
+				//5x bat, 1x brute, 1x Rat, 1x skull shaman
+				return new ArrayList<>(Arrays.asList(
+						Bat.class, Bat.class, Bat.class,SkullShaman.class,
+						Brute.class, Rat.class,SkullShaman.class));
 
 			//Bloodborne
-			case 14:
+				case 17:
+				//3x skeleton, 1x thief, 2x shaman, 3x guard
+				return new ArrayList<>(Arrays.asList( Huntsman.class,  Huntsman.class, TorchHuntsman.class,
+						TorchHuntsman.class,
+						TorchHuntsman.class, TorchHuntsman.class,
+						TorchHuntsman.class, ShieldHuntsman.class, Guard.class));
+			case 18:
 				//3x skeleton, 1x thief, 1x swarm, 1x Rat
-				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class,
-						Swarm.class, Rat.class));
-			case 15:
+				return new ArrayList<>(Arrays.asList(Huntsman.class, Huntsman.class, TorchHuntsman.class,
+						TorchHuntsman.class,SwordHuntsman.class,
+						ShieldHuntsman.class, FetidRat2.class));
+			case 19:
 				//3x skeleton, 1x thief, 1x shaman, 1x guard, 1x fetid rat
-				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class, FetidRat2.class,
-						Shaman.class,
+				return new ArrayList<>(Arrays.asList(Skeleton.class, Huntsman.class, Skeleton.class,
+						TorchHuntsman.class, FetidRat2.class,SwordHuntsman.class,
+						ShieldHuntsman.class,
 						Guard.class));
-			case 16:
+			case 20:
 				//3x skeleton, 1x thief, 2x shaman, 2x guard, 1x Rat
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
 						Thief.class,
 						Shaman.class, Shaman.class,
-						Guard.class, Guard.class, Rat.class));
+						ShieldHuntsman.class, Guard.class, Rat.class));
 
 
 				
-			// Caves
-			case 18:
-				//5x bat, 1x brute, 1x Rat
+			// Caves with Mushrooms
+			case 22:
+				//5x bat, 1x brute, 1x Rat, 1x skull shaman
 				return new ArrayList<>(Arrays.asList(
-						Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
-						Brute.class, Rat.class));
-			case 19:
+						Bat.class, WalkingMushroom.class, Bat.class, WalkingMushroom2.class, Bat.class,
+						Brute.class, Rat.class,SkullShaman.class));
+			case 23:
 				//5x bat, 5x brute, 1x spinner, 1x Skull shaman
 				return new ArrayList<>(Arrays.asList(
-						Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
+						Bat.class, WalkingMushroom.class, WalkingMushroom2.class, Bat.class, Bat.class,
 						Brute.class, Brute.class, Brute.class, Brute.class, Brute.class,
 						Spinner.class, SkullShaman.class));
-			case 20:
+			case 24:
 				//1x bat, 3x brute, 1x shaman, 1x spinner, 1 x rat
 				return new ArrayList<>(Arrays.asList(
 						Bat.class,
-						Brute.class, Brute.class, Brute.class,
+						WalkingMushroom2.class, Brute.class, Brute.class,
 						Shaman.class,
-						Spinner.class, Rat.class));
-			case 21:
+						Spinner.class, Rat.class, SkullShaman.class));
+			case 25:
 				//1x bat, 3x brute, 1x shaman, 4x spinner, 1x rat, 1x skull shaman
 				return new ArrayList<>(Arrays.asList(
-						Bat.class,
+						WalkingMushroom.class,
 						Brute.class, Brute.class, Brute.class,
 						Shaman.class, Rat.class,
-						Spinner.class, Spinner.class, Spinner.class, Spinner.class,SkullShaman.class));
+						WalkingMushroom2.class, Spinner.class, Spinner.class, Spinner.class,SkullShaman.class));
+			case 26:
+				//1x bat, 3x brute, 1x shaman, 4x spinner, 1x rat, 1x skull shaman
+				return new ArrayList<>(Arrays.asList(
+						WalkingMushroom.class,
+						Brute.class, Brute.class, Brute.class,
+						Shaman.class, Rat.class,
+						WalkingMushroom2.class, Spinner.class, Spinner.class, Spinner.class,SkullShaman.class));
 				
 			// City
-			case 23:
+			case 28:
 				//5x elemental, 5x warlock, 1x monk, 1 x bat
 				return new ArrayList<>(Arrays.asList(
 						Elemental.class, Elemental.class, Elemental.class, Elemental.class, Elemental.class,
 						Warlock.class, Warlock.class, Warlock.class, Warlock.class, Warlock.class,
 						Monk.class, Bat.class));
-			case 24:
+			case 29:
 				//2x elemental, 2x warlock, 2x monk, 1x rat
 				return new ArrayList<>(Arrays.asList(
 						Elemental.class, Elemental.class,
 						Warlock.class, Warlock.class,
 						Monk.class, Monk.class, Rat.class));
-			case 25:
+			case 30:
 				//1x elemental, 1x warlock, 2x monk, 1x golem
 				return new ArrayList<>(Arrays.asList(
 						Elemental.class,
 						Warlock.class,
 						Monk.class, Monk.class,
 						Golem.class));
-			case 26:
-				//1x elemental, 1x warlock, 2x monk, 3x golem
-				return new ArrayList<>(Arrays.asList(
-						Elemental.class,
-						Warlock.class,
-						Monk.class, Monk.class,
-						Golem.class, Golem.class, Golem.class));
-			case 27:
-				//1x elemental, 1x warlock, 2x monk, 3x golem
-				return new ArrayList<>(Arrays.asList(
-						Elemental.class,
-						Warlock.class,
-						Monk.class, Monk.class,
-						Golem.class, Golem.class, Golem.class));
-				
-			// Halls
-			case 30:
-				//3x succubus, 3x evil eye
-				return new ArrayList<>(Arrays.asList(
-						Succubus.class, Succubus.class, Succubus.class,
-						Eye.class, Eye.class, Eye.class));
 			case 31:
-				//2x succubus, 4x evil eye, 2x scorpio
+				//1x elemental, 1x warlock, 2x monk, 3x golem
 				return new ArrayList<>(Arrays.asList(
-						Succubus.class, Succubus.class,
-						Eye.class, Eye.class, Eye.class, Eye.class,
-						Scorpio.class, Scorpio.class));
-			case 32:
-				//1x succubus, 2x evil eye, 3x scorpio
-				return new ArrayList<>(Arrays.asList(
-						Succubus.class,
-						Eye.class, Eye.class,
-						Scorpio.class, Scorpio.class, Scorpio.class));
-			Scorpio.class, Scorpio.class));
-			case 33:
-				//1x succubus, 2x evil eye, 3x scorpio
-				return new ArrayList<>(Arrays.asList(
-						Succubus.class,
-						Eye.class, Eye.class,
-						Scorpio.class, Scorpio.class, Scorpio.class));
-			Scorpio.class, Scorpio.class));
+						Elemental.class,
+						Warlock.class,
+						Monk.class, Monk.class,
+						Golem.class, Golem.class, Golem.class));
+
+
 			case 34:
 				//1x succubus, 2x evil eye, 3x scorpio
 				return new ArrayList<>(Arrays.asList(
 						Succubus.class,
 						Eye.class, Eye.class,
 						Scorpio.class, Scorpio.class, Scorpio.class));
+						case 35:
+				//1x succubus, 2x evil eye, 3x scorpio
+				return new ArrayList<>(Arrays.asList(
+						Succubus.class,
+						Eye.class, Eye.class,
+						Scorpio.class, Scorpio.class, Scorpio.class));
+						case 36:
+				//1x succubus, 2x evil eye, 3x scorpio
+				return new ArrayList<>(Arrays.asList(
+						Succubus.class,
+						Eye.class, Eye.class,
+						Scorpio.class, Scorpio.class, Scorpio.class));
+						case 37:
+				//1x succubus, 2x evil eye, 3x scorpio
+				return new ArrayList<>(Arrays.asList(
+						Succubus.class,
+						Eye.class, Eye.class,
+						Scorpio.class, Scorpio.class, Scorpio.class));
+						case 38:
+				//1x succubus, 2x evil eye, 3x scorpio
+				return new ArrayList<>(Arrays.asList(
+						Succubus.class,
+						Eye.class, Eye.class,
+						Scorpio.class, Scorpio.class, Scorpio.class));
+
 		}
 		
 	}
