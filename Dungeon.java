@@ -290,20 +290,20 @@ public class Dungeon {
 		case 15:
 		case 16:level = new CaveLevel();
 			break;
-		case 17:
+		case 17: //Yharnam city
 		case 18:
 		case 19:
-		case 20:level = new SewerLevel();
+		case 20:level = new SewerLevel(); 
 			break;
-		case 21:level = new SewerBossLevel();
+			case 21:level = new SewerBossLevel(); // TODO: replace this with Cleric Beast Boss Chamber
 			break;
-		case 22:
+		case 22: // Mushroom caves
 		case 23:
 		case 24:
 		case 25:
 		case 26:level = new CavesLevel();
 			break;
-		case 27:level = new CavesBossLevel();
+			case 27:level = new CavesBossLevel(); // TODO: replace this with Cave Boss Level with secret rooms
 			break;			
 		case 28:level = new CityLevel();
 			break;			
@@ -376,7 +376,7 @@ public class Dungeon {
 	}
 	
 	public static boolean bossLevel( int depth ) {
-		return depth == 6 || depth == 12 || depth == 17 || depth == 22 || depth ==28 || depth == 35;
+		return depth == 6 || depth == 12 || depth == 17 || depth == 21 || depth ==27 || depth == 32 || depth ==39;
 	}
 	
 
