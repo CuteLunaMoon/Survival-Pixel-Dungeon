@@ -449,58 +449,131 @@ private static final String INTERACTTIME = "interactTime";
 			}break;
 
 			case 4:{
-
+		if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 			}break;
 			case 5:{
-
+		if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 			}break;
 			case 6:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 			
 			}break;
 			case 7:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 			
 			}break;
 			case 8:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 			
 
 			}break;
 			case 9:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
 			case 10:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
 			case 11:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
 			case 12:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
 			case 13:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
 			case 14:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
 			case 15:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
 			case 16:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
 			case 17:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
 			case 18:{
+if(interactiveTime <2){
+				tell(TALK_TXT2[number]);
+				}else if (interactiveTime>=2){
+				tell(TALK_TXT3[number]);
+				}
 
 			}break;
 
