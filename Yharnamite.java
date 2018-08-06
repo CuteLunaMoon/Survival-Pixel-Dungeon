@@ -21,12 +21,18 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs;
 
+import com.shatteredpixel.shatteredpixeldungeon.Assets;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Amok;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Poison;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 
 
+import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.darts.Dart;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Notes;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
@@ -34,6 +40,7 @@ import com.shatteredpixel.shatteredpixeldungeon.sprites.YharnamiteSprite;
 import com.shatteredpixel.shatteredpixeldungeon.windows.WndCaptain;
 
 import com.shatteredpixel.shatteredpixeldungeon.windows.WndQuest;
+import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
@@ -45,6 +52,13 @@ public class Yharnamite extends NPC {
 
 		properties.add(Property.IMMOVABLE);
 	}
+
+	public  int doorType; //1 = candle, 2 = lantern
+	public  int doorType(){
+		return  doorType;
+	}
+	public  String DOORTYPE = "doorType";
+
 //TODO: questlines for these shut-in NPCs
 
 	public String[] TALK_TXT ={
@@ -166,8 +180,7 @@ public class Yharnamite extends NPC {
 
 	
 	
-	
-	public String[] LAST_TALK_TXT3 ={
+	public String[] TALK_TXT3 ={
 //Hungry folks end txt
 	" Beware of the beast, kind /s",
 
@@ -226,7 +239,7 @@ public class Yharnamite extends NPC {
 //Unnamed male NPC #4	==> lewd tentacle, also increase 1 madness EVERY TIME YOU TALk TO THIS GUY. 
 	"Ia Ia. Oh great brood-mother Shub-Niggurath, your apendages are so beautiful, my feeble mind kan barely komprehend it!...Ahhh... It feels so good... Zese godly kloud-like tentakle are so good... ",		
 
-	}
+	};
 
 
 	// the folk who gives the sword
@@ -281,7 +294,7 @@ public class Yharnamite extends NPC {
 // didn't talk to the daughter before defeating Goo
 	" Who are you? Hmm... A new adventurer, are ya? Well, we have no business with you. Off with you, now.",	
 
-	}
+	};
 
 
 	public void GascoigneFamilyQuest(){
@@ -324,11 +337,11 @@ public class Yharnamite extends NPC {
 // rescue quest complete
 	"Wow, das ist nett. Thank you, my friend. Thank you alot. Now vee vill leafe this accursed city. Take zese sings as our thanks, kind jager. Once again, thank you and gute Jagd.",
 
-	}
+	};
 
 	//for deceiver quest
 	
-	public bool bloodGiven =false;
+	public boolean bloodGiven =false;
 	
 	public String[] QUEST_TXT_DECEIVER = {
 // have no blood vials
@@ -339,7 +352,7 @@ public class Yharnamite extends NPC {
 // others
 	" Go feed yourself to a beast!",
 
-	}
+	};
 
 
 	
@@ -363,6 +376,7 @@ private static final String INTERACTTIME = "interactTime";
 		super.storeInBundle(bundle);
 		bundle.put(NUMBER, number);
 		bundle.put(INTERACTTIME,interactTime);
+		//bundle.put(DOORTYPE,doorType);
 	}
 
 	@Override
@@ -370,6 +384,7 @@ private static final String INTERACTTIME = "interactTime";
 		super.restoreFromBundle( bundle );
 		number = bundle.getInt( NUMBER );
 		interactTime =bundle.getInt( INTERACTTIME );
+
 	}
 
 	@Override
@@ -408,21 +423,23 @@ private static final String INTERACTTIME = "interactTime";
 		if(interactTime ==0){
 		
 		tell(TALK_TXT[number]);
-		interactTime ++
+		interactTime ++;
 		
 		}else{
+			if(interactTime<5)
+			interactTime ++;
 			switch(number){
 //Hungry folks
 			case 0:{
-			HungryFamilyQues();
+			HungryFamilyQuest();
 			}break;
 
 //Female NPC with no quest #1
 			case 1:{ 
 			//she tells nothing then
-				if(interactiveTime <2){
+				if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 				
@@ -438,140 +455,159 @@ private static final String INTERACTTIME = "interactTime";
 			case 3:{
 				//he alerts the mob at 3rd encounter
 	
-				if(interactiveTime ==1){
+				if(interactTime ==1){
 				tell(TALK_TXT2[number]);
 				
-				}else if (interactiveTime>1){
-				
+				}else if (interactTime>1){
+					CellEmitter.center( pos ).start( Speck.factory( Speck.SCREAM ), 0.3f, 3 );
 				yell(TALK_TXT3[number]);
+				for (Mob mob : Dungeon.level.mobs.toArray( new Mob[0] )) {
+					mob.beckon( pos );
+					if (Dungeon.level.heroFOV[mob.pos]) {
+						Buff.prolong(mob, Amok.class, 5f);
+					}
+				}
+				Sample.INSTANCE.play( Assets.SND_ALERT );
 				}
 			
 			}break;
 
+				//Female NPC with no quest #2
 			case 4:{
-		if(interactiveTime <2){
+		if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 			}break;
+
+				//Yharnamite wh*re, encounter as male
 			case 5:{
-		if(interactiveTime <2){
+		if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 			}break;
+				//Yharnamite wh*re, encounter as female
 			case 6:{
-if(interactiveTime <2){
+if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
+				}
+// Unnamed male NPC #1
+			}break;
+			case 7:
+				//(8) Deceiver
+				{
+				if(interactTime <2){
+					tell(TALK_TXT2[number]);
+				}else if (interactTime>=2){
+					tell(TALK_TXT3[number]);
 				}
 			
 			}break;
-			case 7:{
-if(interactiveTime <2){
-				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
-				tell(TALK_TXT3[number]);
-				}
-			
-			}break;
-			case 8:{
-if(interactiveTime <2){
-				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
-				tell(TALK_TXT3[number]);
+				//Rude unnamed male NPC #2
+
+				case 8:
+				{
+					if(interactTime <2){
+					tell(TALK_TXT2[number]);
+				}else if (interactTime>=2){
+					tell(TALK_TXT3[number]);
 				}
 			
 
 			}break;
 			case 9:{
-if(interactiveTime <2){
+			if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 
 			}break;
 
 			case 10:{
-if(interactiveTime <2){
+			if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 
 			}break;
 
 			case 11:{
-if(interactiveTime <2){
+			if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 
 			}break;
 
 			case 12:{
-if(interactiveTime <2){
+			if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 
 			}break;
 
 			case 13:{
-if(interactiveTime <2){
+			if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 
 			}break;
 
 			case 14:{
-if(interactiveTime <2){
+			if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 
 			}break;
 
 			case 15:{
-if(interactiveTime <2){
+			if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
-				tell(TALK_TXT3[number]);
+				}else if (interactTime>=2){
+				Buff.affect( Dungeon.hero, Poison.class).set((5) );
+                    Dart dart = new Dart();
+                    Dungeon.level.drop(dart,Dungeon.hero.pos); 
+				yell(TALK_TXT3[number]);
 				}
 
 			}break;
 
 			case 16:{
-if(interactiveTime <2){
+			if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 
 			}break;
 
 			case 17:{
-if(interactiveTime <2){
+			if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 
 			}break;
 
 			case 18:{
-if(interactiveTime <2){
+				if(interactTime <2){
 				tell(TALK_TXT2[number]);
-				}else if (interactiveTime>=2){
+				}else if (interactTime>=2){
 				tell(TALK_TXT3[number]);
 				}
 
@@ -585,6 +621,10 @@ if(interactiveTime <2){
 		
 
 		return false;
+	}
+	
+	public void PlayIdle2(){
+		((YharnamiteSprite)sprite).Idle2();
 	}
 	
 	private void tell( String text ) {
