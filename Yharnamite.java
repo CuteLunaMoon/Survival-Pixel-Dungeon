@@ -116,7 +116,11 @@ public class Yharnamite extends NPC {
 	"Oh hello, weary traveller. Yes, you have come to the right place. This is Pixelmart. Well, we are off during hunts and I can't let you in, but if you want to buy or sell anything, just tell me. Note that we can only trade goods that fits through this privacy window. ",
 	
 //(18)  Unnamed male NPC #4	
-	"What's zat? Oh, we're fine here mate. All's in tip top shape, not even a sniff of cold. Gute Jagd.",};
+	"What's zat? Oh, we're fine here mate. All's in tip top shape, not even a sniff of cold. Gute Jagd.",
+
+//(19) Archibald
+	" Oh, hello there. Not around here are ya? Well, I'm sorry I cant open thsi door for you. I guess you already know why. I'm Dlabihcra, a scholar of the Church. I can't help you nor offer anything, so sorry. But if you need an advise or a listening ear, I'll be here for you.",
+};
 	
 	
 	
@@ -354,6 +358,14 @@ public class Yharnamite extends NPC {
 
 	};
 
+	//for Archibald's quest
+private String TXT_BLOOD_STUDY =" There are different kinds of blood, just like different kinds of people, you see. A strong will produces thick blood. Doubtless, the product of obsession, a potent source of human strength. And magical creatures, no doubt, leave a portion of their magic in the blood they bleed. Magic-infused blood after being bled from wounds coagulate and form hard, pulsing crystals. And well, I'm studying such blood and the way to infuse them into weapons. Do you happen to have any unsual blood crystals?";	 
+
+private String[] TXT_PROGRESS = {" Oh, youÅfve been safe, have you? So, how about it? Found any unusual blood-crystals? ",
+	"Åc You... IÅfve been waitingÅc YouÅfve a blood-crystal, yes? [chuckles]Åc itÅfs that sort of smellÅc Do hurry upÅc HurryÅc Hand it over... [Chuckles]Åc Still smellsÅc",
+	" Oh... It's you again... Heh, heh, heh,... I must admit that I have been expecting your return... Ah... I can smell that you have a blood crystal... Come on, hand it over... [maniacally laugh] ",};
+
+
 
 	
 	
@@ -440,7 +452,7 @@ private static final String INTERACTTIME = "interactTime";
 				if(interactTime <2){
 				tell(TALK_TXT2[number]);
 				}else if (interactTime>=2){
-				tell(TALK_TXT3[number]);
+				GLoq.i("No response");
 				}
 				
 			
