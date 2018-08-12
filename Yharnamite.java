@@ -32,14 +32,17 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 
 import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
 import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfMight;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.darts.Dart;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Notes;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.YharnamiteSprite;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
 import com.shatteredpixel.shatteredpixeldungeon.windows.WndCaptain;
 
 import com.shatteredpixel.shatteredpixeldungeon.windows.WndQuest;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndQuestGascoigne;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
@@ -116,11 +119,7 @@ public class Yharnamite extends NPC {
 	"Oh hello, weary traveller. Yes, you have come to the right place. This is Pixelmart. Well, we are off during hunts and I can't let you in, but if you want to buy or sell anything, just tell me. Note that we can only trade goods that fits through this privacy window. ",
 	
 //(18)  Unnamed male NPC #4	
-	"What's zat? Oh, we're fine here mate. All's in tip top shape, not even a sniff of cold. Gute Jagd.",
-
-//(19) Archibald
-	" Oh, hello there. Not around here are ya? Well, I'm sorry I cant open thsi door for you. I guess you already know why. I'm Dlabihcra, a scholar of the Church. I can't help you nor offer anything, so sorry. But if you need an advise or a listening ear, I'll be here for you.",
-};
+	"What's zat? Oh, we're fine here mate. All's in tip top shape, not even a sniff of cold. Gute Jagd.",};
 	
 	
 	
@@ -132,7 +131,7 @@ public class Yharnamite extends NPC {
 		"_No response_",
 
 //Gascoigne's daughter
-	"Is it you again? And you are an adventurer? Mm... Then, please, can I ask you a small kindness? My dad went to Loran for the hunt, and rarely came back on his own so my mum went to find him, and now she's gone, too. Can you please look for my mum and dad?",
+	"Is it you again? And you are an adventurer? Mm... Then, please, can I ask you a small kindness? My dad went to Loran for the hunt, and rarely came back on his own so my mum and grand dad went to find him, and now they are gone, too. Can you please look for them? I'm home with my sister but we are so scared.",
 
 //Rude unnamed NPC #1
 	"You again? Get out of my sight, you sicko, or I'll sic guards on you.", 
@@ -193,7 +192,7 @@ public class Yharnamite extends NPC {
 
 
 // Gasscoigne's family last encounter (given they have met)
-	" Good luck, /s ",
+	" Good luck, ",
 
 //Rude unnamed NPC #1 ==> YELL==> Trigger Scroll of Challenge
 	" ALARM! ALARM! The outsider is over here!", 
@@ -271,23 +270,24 @@ public class Yharnamite extends NPC {
 	public boolean acceptQuest = false;
 	public boolean gooDefeated = false;
 	public boolean metBeforeGoo = false; 
+	public boolean potionGiven = false;
 
 
 	public String[] QUEST_TXT_GASCOIGNE ={
 //refuse
-	"Oh, alright. Well, t-thanks mister /s for talking, at least. Please be careful out there.",
+	"Oh, alright. Well, t-thanks mister for talking, at least. Please be careful out there.",
 
 //refuse, female
-	"Oh, alright. Well, t-thanks miss /s for talking, at least. Please be careful out there.",
+	"Oh, alright. Well, t-thanks miss for talking, at least. Please be careful out there.",
 
 // accept
-	"Really? Oh, th-thank you! My m-mom has very long blond hair and she wear a big, beautiful red brooch. you won't miss it.",
+	"Really? Oh, th-thank you! My grand dad is a hunter, too. He wear a very notable yellow buffcoat and carries a saw as a weapon, and he's somehow...very young, too. He looks even younger than my dad.",
 
 //accepted quest, 2nd encounter
-	"Have you found them, mister /S ? My dad is very tall, he wears bandages over his eyes and he carries a very big axe. You won't miss it. Tonight is the night of the hunt, please be careful, mister /s.",
+	"Have you found them, mister? My dad is very tall, he wears bandages over his eyes and he carries a very big axe. You won't miss it. Tonight is the night of the hunt, please be careful, mister /s.",
 
 //acceptedquest, female 2nd encouter
-	"Have you found them, miss /S ? My dad is very tall, he wears bandages over his eyes and he carries a very big axe. You won't miss it. Tonight is the night of the hunt, please be careful, miss /s.",
+	"Have you found them, miss? My dad is very tall, he wears bandages over his eyes and he carries a very big axe. You won't miss it. Tonight is the night of the hunt, please be careful, miss /s.",
 
 //accepted, come back ater defeating Goo
 	"Oh, you must be the adventurer my daughter talked to ealier. I'm her father. I was carried away by the hunt... Ha, ha. Fortunately my wife found me and brought me back. I don't reckon you from around here, a new adventurer, are ya?... Then, take this, as a gift to the new face... And don't ya dare wander to Loran... Tonight, there's something different in the air... Men leave as hunters, and return as beasts...Let there be no doubt. If it moves, you can be sure it's a beast. ...And even if it doesn't, well, don't take any chances! ",
@@ -303,11 +303,49 @@ public class Yharnamite extends NPC {
 
 	public void GascoigneFamilyQuest(){
 		
-		
-		if(!metBeforeGoo ){
-	
+		//if Goo is defeated, this quest immidiately ends.
+		if(Quest.gooDefeated ){
+			
+			if(metBeforeGoo){
+			// met before Goo
+			if(acceptQuest){
+			if(!potionGiven){
+			tell(QUEST_TXT_GASCOIGNE[5]);
+			//one free potion of might
+				PotionOfMight potion_ = new PotionOfMight();
+				if (potion_.doPickUp( Dungeon.hero )) {
+												GLog.i( Messages.get(Dungeon.hero, "you_now_have", potion_.name()) );
+											} else {
+												Dungeon.level.drop( potion_, Dungeon.hero.pos ).sprite.drop();
+											}
+											potionGiven = true;
+				}else{
+				String k_ = TALK_TXT3[2] +Dungeon.hero.givenName();
+				tell(k_);
+				}
+			
+			}else{
+				//met before Goo, refuse quest
+				tell(QUEST_TXT_GASCOIGNE[6]);
+			}
+			}else{
+				tell(QUEST_TXT_GASCOIGNE[7]);
+			}
+			
 		}else{
 		
+			if(acceptQuest){
+				
+				if(Dungeon.hero.givenName() == "Huntress"){
+				tell(QUEST_TXT_GASCOIGNE[4]);
+				}else{
+				tell(QUEST_TXT_GASCOIGNE[3]);
+				}
+				
+			}else{
+				GameScene.show(new WndQuestGascoigne(this));
+				metBeforeGoo =true;
+			}
 		
 		}
 
@@ -358,14 +396,6 @@ public class Yharnamite extends NPC {
 
 	};
 
-	//for Archibald's quest
-private String TXT_BLOOD_STUDY =" There are different kinds of blood, just like different kinds of people, you see. A strong will produces thick blood. Doubtless, the product of obsession, a potent source of human strength. And magical creatures, no doubt, leave a portion of their magic in the blood they bleed. Magic-infused blood after being bled from wounds coagulate and form hard, pulsing crystals. And well, I'm studying such blood and the way to infuse them into weapons. Do you happen to have any unsual blood crystals?";	 
-
-private String[] TXT_PROGRESS = {" Oh, youÅfve been safe, have you? So, how about it? Found any unusual blood-crystals? ",
-	"Åc You... IÅfve been waitingÅc YouÅfve a blood-crystal, yes? [chuckles]Åc itÅfs that sort of smellÅc Do hurry upÅc HurryÅc Hand it over... [Chuckles]Åc Still smellsÅc",
-	" Oh... It's you again... Heh, heh, heh,... I must admit that I have been expecting your return... Ah... I can smell that you have a blood crystal... Come on, hand it over... [maniacally laugh] ",};
-
-
 
 	
 	
@@ -382,13 +412,20 @@ private String[] TXT_PROGRESS = {" Oh, youÅfve been safe, have you? So, how abou
 
 private static final String NUMBER = "number";
 private static final String INTERACTTIME = "interactTime";
+private static final String POTIONGIVEN = "potionGiven";
+private static final String METBEFOREGOO = "metbeforeGoo";
+private static final String ACCEPTEDQUEST = "acceptedQuest";
+
+
 
 	@Override
 	public void storeInBundle( Bundle bundle ) {
 		super.storeInBundle(bundle);
 		bundle.put(NUMBER, number);
 		bundle.put(INTERACTTIME,interactTime);
-		//bundle.put(DOORTYPE,doorType);
+		bundle.put(POTIONGIVEN,potionGiven);
+		bundle.put(METBEFOREGOO,metBeforeGoo);
+		bundle.put(ACCEPTEDQUEST,acceptQuest);
 	}
 
 	@Override
@@ -396,6 +433,10 @@ private static final String INTERACTTIME = "interactTime";
 		super.restoreFromBundle( bundle );
 		number = bundle.getInt( NUMBER );
 		interactTime =bundle.getInt( INTERACTTIME );
+		//for Gascoigne's quest
+		acceptQuest = bundle.getBoolean(ACCEPTEDQUEST);
+		potionGiven = bundle.getBoolean(POTIONGIVEN);
+		metBeforeGoo = bundle.getBoolean(METBEFOREGOO);
 
 	}
 
@@ -452,7 +493,7 @@ private static final String INTERACTTIME = "interactTime";
 				if(interactTime <2){
 				tell(TALK_TXT2[number]);
 				}else if (interactTime>=2){
-				GLoq.i("No response");
+				tell(TALK_TXT3[number]);
 				}
 				
 			
@@ -460,7 +501,7 @@ private static final String INTERACTTIME = "interactTime";
 
 //Gascoigne's family
 			case 2:{
-
+				GascoigneFamilyQuest();
 			}break;
 
 //Rude unnamed NPC #1 ==> YELL==> Trigger Scroll of Challenge
@@ -639,9 +680,32 @@ if(interactTime <2){
 		((YharnamiteSprite)sprite).Idle2();
 	}
 	
-	private void tell( String text ) {
+	public void tell( String text ) {
 		GameScene.show(
 			new WndQuest( this, text ));
+	}
+	
+	public static class Quest{
+	
+
+	public static boolean gooDefeated = false;
+	
+	private static String NODE = "Yharnamite";
+	private static String GOODEFEATED = "gooDefeated";
+	
+			public static void storeInBundle( Bundle bundle ) {
+			
+			Bundle node = new Bundle();
+			
+			node.put( GOODEFEATED, gooDefeated );
+			
+
+			
+			bundle.put( NODE, node );
+		}
+		
+	
+	
 	}
 				
 
