@@ -261,7 +261,7 @@ public class Yharnamite extends NPC {
 			tell(TALK_TXT[number]);
 			foodQuestGiven = true;
 		}else{
-			
+		     
 			tell(TALK_TXT2[number]);
 		}
 	}
@@ -689,15 +689,24 @@ if(interactTime <2){
 	
 
 	public static boolean gooDefeated = false;
+	publis static boolean swordGiven = false;
+	public static boolean foodGiven = false;
+	public static boolean bloodGiven = false;
 	
 	private static String NODE = "Yharnamite";
 	private static String GOODEFEATED = "gooDefeated";
+	private static String SWORDGIVEN = "swordGiven";
+	private static String FOODGIVEN = "foodGiven";
+	private static String BLOODGIVEN = "bloodGiven";
 	
 			public static void storeInBundle( Bundle bundle ) {
 			
 			Bundle node = new Bundle();
 			
 			node.put( GOODEFEATED, gooDefeated );
+			node.put(SWORDGIVEN, swordGiven);
+			node.put(FOODGIVEN, foodGiven);
+			node.put(BLOODGIVEN, bloodGiven);
 			
 
 			
@@ -706,6 +715,12 @@ if(interactTime <2){
 		
 	
 	
+	}
+	public static void Reset(){
+	gooDefeated = false;
+	swordGiven = false;
+	foodGiven = false;
+	bloodGiven = false;
 	}
 				
 
