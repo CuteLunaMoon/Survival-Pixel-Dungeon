@@ -32,7 +32,13 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 
 import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
 import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfMight;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.Scroll;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfUpgrade;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Sword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.darts.Dart;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Notes;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
@@ -81,10 +87,10 @@ public class Yharnamite extends NPC {
 	"Ohh, I'm terribly sorry... There's no one home... I'm really, really sorry... So sorry for ya...",
 
 //(5) Yharnam brothel, encounter as male
-	"I'm off during hunts. But if you are still...thirsty, darling. Come back in the morning.",
+" Your husband isn't here. I'm off during hunts!... Oh, I thought you were some angry housewives. I'm off during hunts. But if you are still...thirsty, darling. Come back in the morning.",
 
-//(6) Yharnam brothel, encounter as female
-	" Your husband isn't here. I'm off during hunts!... Oh, I thought you were some angry housewives. Well, this place is no place for the ladies...And in case you are into ladies, please come back in the morning.",
+//(6) Zealot
+	" Bless us with blood, bless us with blood... Hmm? Who's that? Get out of my door step you impudent lout.",
 
 
 //(7) Unnamed male NPC #1 GIVE SWORD
@@ -124,29 +130,29 @@ public class Yharnamite extends NPC {
 	
 	
 	public String[] TALK_TXT2 ={
-// Hungry Folks 2nd txt
+//(0) Hungry Folks 2nd txt
 		" Any luck finding the rations, kind /s?",
 
-// Female NPC with no quest #1
+//(1) Female NPC with no quest #1
 		"_No response_",
 
-//Gascoigne's daughter
+//(2) Gascoigne's daughter
 	"Is it you again? And you are an adventurer? Mm... Then, please, can I ask you a small kindness? My dad went to Loran for the hunt, and rarely came back on his own so my mum and grand dad went to find him, and now they are gone, too. Can you please look for them? I'm home with my sister but we are so scared.",
 
-//Rude unnamed NPC #1
+//(3) Rude unnamed NPC #1
 	"You again? Get out of my sight, you sicko, or I'll sic guards on you.", 
 	
-//Female NPC with no quest #2	
+//(4) Female NPC with no quest #2	
 	" I said there was nobody home. And we can't help you... Please, get away from us...",
 
-// Yharnam brothel, encounter as male
-	"Oh, you seem desperate... But I'm off during hunts. Come back in the morning.",
+//(5) Yharnam brothel, encounter as male
+	"Oh, you seem desperate... But I'm off during hunts. Come back in the morning, hun.",
 
-// Yharnam brothel, encounter as female
-	"  Come back in the morning, I'm off now.",
+//(6) Zealot
+	" Ia! Ia! Great Yog-Sothoth! Y'AI'NG'NGAHYOG-SOTHOTHH'EE-L'GEBF'AI THRODOGUAAAHH...",
 
 
-// Unnamed male NPC #1 ==> Give Short Sword +1
+//(7) Unnamed male NPC #1 ==> Give Short Sword +1
 	" Tsk... You again? What do you want this time? I can't open this door. It's too dangerous for my family. And you better go hiding now before they find you... Hey! Wait a minute...Tsk... I can't let you go like this... Take this sword, I have little use of it for now. At night like this, the Eastern quarter is boarded up, you should try the canal system. ",
 
 //(8) Deceiver
@@ -184,17 +190,17 @@ public class Yharnamite extends NPC {
 	
 	
 	public String[] TALK_TXT3 ={
-//Hungry folks end txt
+//(0)Hungry folks end txt
 	" Beware of the beast, kind /s",
 
-// Female NPC with no quest #1
+//(1) Female NPC with no quest #1
 	" _No response_ ",
 
 
-// Gasscoigne's family last encounter (given they have met)
+//(2) Gasscoigne's family last encounter (given they have met)
 	" Good luck, ",
 
-//Rude unnamed NPC #1 ==> YELL==> Trigger Scroll of Challenge
+//(3) Rude unnamed NPC #1 ==> YELL==> Trigger Scroll of Challenge
 	" ALARM! ALARM! The outsider is over here!", 
 	
 //Female NPC with no quest #2	
@@ -203,18 +209,18 @@ public class Yharnamite extends NPC {
 //(5) Yharnam brothel, encounter as male
 	"_No response_ ",
 
-//(5a) Yharnam brothel, encounter as female
+//(6) Yharnam brothel, encounter as female
 	"  _No response_ ",
 
 
-// Unnamed male NPC #1
-	" Sorry, I can't open this door, not on the nights of the hunt. Go find somewhere else to hide.",
+//(7) Unnamed male NPC #1
+	" Sorry, but I can't open this door, not on the nights of the hunt. Go find somewhere else to hide.",
 //(8) Deceiver
 	"  Good luck staying alive till dawn. Ah ha ha ha. ",
 
 
 //Rude unnamed male NPC #2
-	" We're cursed. We're all cursed... What? Get away from my door step you impudent lout!",
+	" We're cursed. We're all cursed... This is the gods' judgement! Ah ha ha ha!",
 
 // Unnamed male NPC #2 
 	" Good luck staying alive till dawn breaks.",
@@ -241,6 +247,8 @@ public class Yharnamite extends NPC {
 
 //Unnamed male NPC #4	==> lewd tentacle, also increase 1 madness EVERY TIME YOU TALk TO THIS GUY. 
 	"Ia Ia. Oh great brood-mother Shub-Niggurath, your apendages are so beautiful, my feeble mind kan barely komprehend it!...Ahhh... It feels so good... Zese godly kloud-like tentakle are so good... ",		
+//Archibald
+	"...",
 
 	};
 
@@ -254,17 +262,9 @@ public class Yharnamite extends NPC {
 	public boolean foodQuestComplete = false;
 
 	
-	public String QUEST_TXT_HUNGRY_FOLKS ="Oh, thank you, thank you! We haven't got a single dime here but we hope these books can help you in your journey. Thank you alot, kind /s";
+	public String QUEST_TXT_HUNGRY_FOLKS ="Oh, thank you, thank you! We haven't got a single dime here but we hope these scrolls can help you in your journey. Don't ask me, I don't know what they mean. Thank you alot, kind /s";
 	
-	public void HungryFamilyQuest(){
-		if(!foodQuestGiven ){
-			tell(TALK_TXT[number]);
-			foodQuestGiven = true;
-		}else{
-		     
-			tell(TALK_TXT2[number]);
-		}
-	}
+
 
 	// for Gascoigne's family quest
 	public boolean acceptQuest = false;
@@ -350,7 +350,38 @@ public class Yharnamite extends NPC {
 		}
 
 	}
+
+
 	
+	
+	public void HUngryFamilyQuest(){
+	
+		if(!Quest.foodGiven){
+			Food tokens = Dungeon.hero.belongings.getItem( Food.class );
+			if(tokens!=null && (tokens.quantity() >= 3)){
+				tell(QUEST_TXT_HUNGRY_FOLKS);
+				Quest.foodGiven = true;
+				ScrollOfUpgrade potion_ = new ScrollOfUpgrade();
+				if (potion_.doPickUp( Dungeon.hero )) {
+												GLog.i( Messages.get(Dungeon.hero, "you_now_have", potion_.name()) );
+											} else {
+												Dungeon.level.drop( potion_, Dungeon.hero.pos ).sprite.drop();
+											}
+				Item scroll_ = Generator.random( Generator.Category.SCROLL );
+				if (scroll_.doPickUp( Dungeon.hero )) {
+												GLog.i( Messages.get(Dungeon.hero, "you_now_have", scroll_.name()) );
+											} else {
+												Dungeon.level.drop( scroll_, Dungeon.hero.pos ).sprite.drop();
+											}
+			}else{
+				tell(TALK_TXT2[0]);
+			}
+		}else{
+			//complete mission
+			tell("Thank you, good luck staying alive till dawn");
+
+		}
+	}
 
 	
 	//for deutch man quest
@@ -380,6 +411,12 @@ public class Yharnamite extends NPC {
 	"Wow, das ist nett. Thank you, my friend. Thank you alot. Now vee vill leafe this accursed city. Take zese sings as our thanks, kind jager. Once again, thank you and gute Jagd.",
 
 	};
+
+
+	public void GermanManQuest(){
+
+
+	}
 
 	//for deceiver quest
 	
@@ -484,7 +521,7 @@ private static final String ACCEPTEDQUEST = "acceptedQuest";
 			switch(number){
 //Hungry folks
 			case 0:{
-			HungryFamilyQuest();
+			HUngryFamilyQuest();
 			}break;
 
 //Female NPC with no quest #1
@@ -542,7 +579,7 @@ private static final String ACCEPTEDQUEST = "acceptedQuest";
 				tell(TALK_TXT3[number]);
 				}
 			}break;
-				//Yharnamite wh*re, encounter as female
+				//Zealot
 			case 6:{
 if(interactTime <2){
 				tell(TALK_TXT2[number]);
@@ -552,16 +589,27 @@ if(interactTime <2){
 // Unnamed male NPC #1
 			}break;
 			case 7:
-				//(8) Deceiver
+				
 				{
 				if(interactTime <2){
 					tell(TALK_TXT2[number]);
+					if(Quest.swordGiven= false){
+					Sword sw_ = new Sword();
+					sw_.upgrade(3);
+					if (sw_.doPickUp( Dungeon.hero )) {
+												GLog.i( Messages.get(Dungeon.hero, "you_now_have", sw_.name()) );
+					} else {
+												Dungeon.level.drop( sw_, Dungeon.hero.pos ).sprite.drop();
+					}
+					Quest.swordGiven= true;
+					}
+					
 				}else if (interactTime>=2){
 					tell(TALK_TXT3[number]);
 				}
 			
 			}break;
-				//Rude unnamed male NPC #2
+			//(8) Deceiver
 
 				case 8:
 				{
@@ -573,6 +621,7 @@ if(interactTime <2){
 			
 
 			}break;
+			
 			case 9:{
 			if(interactTime <2){
 				tell(TALK_TXT2[number]);
@@ -631,7 +680,7 @@ if(interactTime <2){
 			if(interactTime <2){
 				tell(TALK_TXT2[number]);
 				}else if (interactTime>=2){
-				Buff.affect( Dungeon.hero, Poison.class).set((5) );
+				Buff.affect( Dungeon.hero, Poison.class).set((7) );
                     Dart dart = new Dart();
                     Dungeon.level.drop(dart,Dungeon.hero.pos); 
 				yell(TALK_TXT3[number]);
@@ -689,7 +738,7 @@ if(interactTime <2){
 	
 
 	public static boolean gooDefeated = false;
-	publis static boolean swordGiven = false;
+	public static boolean swordGiven = false;
 	public static boolean foodGiven = false;
 	public static boolean bloodGiven = false;
 	
@@ -712,16 +761,16 @@ if(interactTime <2){
 			
 			bundle.put( NODE, node );
 		}
-		
-	
-	
+		public static void Reset(){
+			gooDefeated = false;
+			swordGiven = false;
+			foodGiven = false;
+			bloodGiven = false;
+		}
+
+
+
 	}
-	public static void Reset(){
-	gooDefeated = false;
-	swordGiven = false;
-	foodGiven = false;
-	bloodGiven = false;
-	}
-				
+
 
 }
