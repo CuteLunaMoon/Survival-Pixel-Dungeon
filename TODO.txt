@@ -1,84 +1,139 @@
-1) CHANGE:
-	 bool shoot(Char enemy, MissileWeapn wep){...}
+STR - increase melee dmg
+SKL - increase throwing dmg & surprised atk dmg
+ARC - increase wand dmg
 
-IN: actors/hero/Hero.java
 
-INTO:
 
-public boolean shoot( Char enemy, MissileWeapon wep, Boolean brkInvi) {
+IMPORTANT
 
-		//temporarily set the hero's weapon to the missile weapon being used
-		KindOfWeapon equipped = belongings.weapon;
-		belongings.weapon = wep;
-		rangedAttack = true;
-		boolean result = attack( enemy );
-		if(brkInvi){
-			Invisibility.dispel();
-		}
-		belongings.weapon = equipped;
-		rangedAttack = false;
+Rename Dwarf into K'n-yan
 
-		return result;
-	}
 
-2) CHANGE:
-	void onThrow (int cell){...}
 
-IN:items/weapon/missiles/MissileWeapon.java
+BONUS QUEST for the Shovel 
 
-INTO:
+a) Killing the body snatching fiend - bonus 250 gold & 2 Madman Skull
 
-protected void onThrow( int cell ) {
-		Char enemy = Actor.findChar( cell );
-		if (enemy == null || enemy == curUser) {
-				parent = null;
-				super.onThrow( cell );
-		} else {
-			if (!curUser.shoot( enemy, this, true )) {
-				rangedMiss( cell );
-			} else {
-				
-				rangedHit( enemy, cell );
+'Asenath'
 
-			}
-		}
-	}
-3) MAKE:
-	SilentThrowingKnives.java
-@Override
-protected void onThrow( int cell ) {
-		Char enemy = Actor.findChar( cell );
-		if (enemy == null || enemy == curUser) {
-				parent = null;
-				super.onThrow( cell );
-		} else {
-			if (!curUser.shoot( enemy, this, false)) {
-				rangedMiss( cell );
-			} else {
-				
-				rangedHit( enemy, cell );
+In this body of Derby, Asenath... or to be exact Eiphram had manage to escape Arkham Asylum and left her husband soul in the former body of her, now dead and putrefying
+Although she was still restrained in the patient restraint clothing, she, he... it seems to be a dangerous foe.
 
-			}
-		}
-	}
+'Derby'
+This skeleton is rotting and has a crushed-in skull.It is nervously holding a battered paper. It seems kind of friendly, despite the stench.
 
-@Override
-	public boolean isUpgradable() {
-		if(lvl <=3){
-			return true;
-		}else{
-			return false;
-		}
+In this three month and a half decaying body of his wife Asenath, Derby is seeking for vengence... for his former life and his best friend Daniel, who was shot six times in the head.
+
+"Dan?go to the sanitarium and kill it. Exterminate it. It isnft Edward Derby any more. She got me?itfs Asenath?and she has been dead three months and a half. I lied when I said she had gone away. I killed her. I had to. It was sudden, but we were alone and I was in my right body. I saw a candlestick and smashed her head in. She would have got me for good at Hallowmass. "
+Ifm too far gone to talk?I couldnft manage to telephone?but I can still write. Ifll get fixed up somehow and bring you this last word and warning. Kill that fiend if you value the peace and comfort of the world. 
+
+
+
+b) Killing a vampiress - bonus 750 gold
+
+Lord Godalming
+
+He wears rich clothing and arms with a hefty pistol.
 	
-	}	
-
-4) The process is quite similar, make TheWhisperer.java - a hand gun that does not break stealth (chage in BulletGun.java instead)
-
-5) Make GunPowder.java - items in crafting
-
-6) FIX: Oil Flask
+Lord Godalming was the fiancee of Lucy, before her death and resurrection as a vampire.  
 
 
 
+
+1) Make Thrasher.java - new enemy in Demon Hall
+
+2) Make GunPowder.java - items in crafting.
+
+6) CONTINUE FIXING: Oil URN, FIXING the FryingPan.java
+
+
+8) The process is quite similar, make TheWhisperer.java - a hand gun that does not break stealth (chage in BulletGun.java instead)
+
+9) Take the Otiluke's Journal (Dolya Slate from Special Suprise PD), rename into Old Hunter's notebook.
+
+_ "Sweet Home" into "Traum des Jagers"
+
+_ Try to add the Hunter's Nightmare - "Der Albtraum des Jagers"
+
+
+10) Finish the special shop
+
+Change the Alchemy Kit (add new function: Make Gun Powder) 
+
+CRAFTING: 
+Bat Guano (dropped from BrownBat/ Bat) => (Leaching near water tile) => Saltpeter
+Burn grasstiles => charcoal (this has to be coded specifically)
+Sulfur (dropped form Fire Elemental / sold form special shop)
+
+
+
+
+11) Re-use the Pet in Sprouted, and add Pets
+
+12) Try adding Sanity Bar - kill the character when it reachs 0.
+
+13) Adding Curio Rooms (it's like adding new interactable NPCs () , with a few options available to each type of curios)
 
 	
+	Large Carcasses	- SEARCH (50% get a disease, 50% mystery meat) / CURED (required potion of purification) => 10 x Cured Meat
+	
+	Statue 		- PRAY (50% Healing, 25% Healing & cure diseases, 25% also get buffed) / DESTROY (damages sanity)
+
+	Tentacle Statue - PRAY (Healing but damages sanity) / SACRIFICE (Cost Blood Vial, Healing and heal sanity) / DESTROY (heal Sanity but damage HP)
+	
+	Campfire 	- COOK - Allow cooking stuff for 10 turns / SNUFF - gives some charcoal and tinder
+	
+		
+14) Classes
+
+	WARRIOR
+
+He starts with a Potion Bandolier and 3 Throwing Stones, short sword and broken seal
+
+Starts with 2 extra STR
+
+Heal when eat food
+
+
+
+	MAGE
+
+He starts with a Scroll Holder and a unique Staff as their initial melee weapon
+
+Starts with 5 extra ARCANE (which increase magic power)
+
+Recharge wands when eat food
+
+
+
+	ROGUE
+
+He now starts with the Cloak of Shadows, a Velvet Pouch
+
+Starts with 'The Final Caress' +2 (x3) - special throwing weapon that can be thrown w/out breaking stealth
+
+Starts with 3 SKL - increase maximum dmg w/ throwing weapons & surprised attacks. 
+
+
+	
+	HUNTRESS
+
+She starts with a Velvet Pouch and a Spirit Bow (bonus dmg scales with ARC)
+
+Starts with extra 2 SKL and 1 ARC
+
+subclass Warden gets a 10 HP Buff (Due to the living plant harzardous nature)
+
+
+
+___________________________________________________________________________	
+	MUSKETEER
+
+She starts with a Potion Bandolier and a Gunslinger Pistol
+
+Starts with a Gunslinger's Toolkit - allow her to craft gun powder and ammo
+
+Starts with 2 extra SKL
+
+ 
+                             		
