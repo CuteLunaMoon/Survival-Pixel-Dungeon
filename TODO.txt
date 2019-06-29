@@ -6,8 +6,11 @@ ARC - increase wand dmg
 
 IMPORTANT
 
-Rename Dwarf into K'n-yan
+<Done>Rename Dwarf into K'n-yan </Done>
 
+IMPORTANT 2
+
+Add Sanity Bar, kill player when sanity reaches 0
 
 
 BONUS QUEST for the Shovel 
@@ -24,8 +27,8 @@ This skeleton is rotting and has a crushed-in skull.It is nervously holding a ba
 
 In this three month and a half decaying body of his wife Asenath, Derby is seeking for vengence... for his former life and his best friend Daniel, who was shot six times in the head.
 
-"Dan?go to the sanitarium and kill it. Exterminate it. It isnÅft Edward Derby any more. She got me?itÅfs Asenath?and she has been dead three months and a half. I lied when I said she had gone away. I killed her. I had to. It was sudden, but we were alone and I was in my right body. I saw a candlestick and smashed her head in. She would have got me for good at Hallowmass. "
-IÅfm too far gone to talk?I couldnÅft manage to telephone?but I can still write. IÅfll get fixed up somehow and bring you this last word and warning. Kill that fiend if you value the peace and comfort of the world. 
+"Dan...go to the sanitarium and kill it. Exterminate it. It isnÅft Edward Derby any more. She got me. itÅfs Asenath and she has been dead three months and a half. I lied when I said she had gone away. I killed her. I had to. It was sudden, but we were alone and I was in my right body. I saw a candlestick and smashed her head in. She would have got me for good at Hallowmass. "
+IÅfm too far gone to talk I couldnÅft manage to telephone but I can still write. IÅfll get fixed up somehow and bring you this last word and warning. Kill that fiend if you value the peace and comfort of the world. 
 
 
 
@@ -44,14 +47,14 @@ Lord Godalming was the fiancee of Lucy, before her death and resurrection as a v
 
 2) Make GunPowder.java - items in crafting.
 
-6) CONTINUE FIXING: Oil URN, FIXING the FryingPan.java
+6) <Done> CONTINUE FIXING: Oil URN, FIXING the FryingPan.java </Done>
 
 
 8) The process is quite similar, make TheWhisperer.java - a hand gun that does not break stealth (chage in BulletGun.java instead)
 
-9) Take the Otiluke's Journal (Dolya Slate from Special Suprise PD), rename into Old Hunter's notebook.
+9)<Half-way done> Take the Otiluke's Journal (Dolya Slate from Special Suprise PD), rename into Old Hunter's notebook.
 
-_ "Sweet Home" into "Traum des Jagers"
+_ "Sweet Home" into "Traum des Jagers" </Half-way Done> (i.e done coding, map making later)
 
 _ Try to add the Hunter's Nightmare - "Der Albtraum des Jagers"
 
@@ -69,8 +72,6 @@ Sulfur (dropped form Fire Elemental / sold form special shop)
 
 
 11) Re-use the Pet in Sprouted, and add Pets
-
-12) Try adding Sanity Bar - kill the character when it reachs 0.
 
 13) Adding Curio Rooms (it's like adding new interactable NPCs () , with a few options available to each type of curios)
 
