@@ -6,11 +6,11 @@ ARC - increase wand dmg
 
 IMPORTANT
 
-<Done>Rename Dwarf into K'n-yan </Done>
+FIX THE DAMN BUG THAT CAUSES CRASHING WHEN ENTERING HUNTER'S DREAM
 
 IMPORTANT 2
 
-Add Sanity Bar, kill player when sanity reaches 0
+Add Sanity Bar, kill player when sanity reaches 0 <Half-way Done>
 
 
 BONUS QUEST for the Shovel 
@@ -52,11 +52,7 @@ Lord Godalming was the fiancee of Lucy, before her death and resurrection as a v
 
 8) The process is quite similar, make TheWhisperer.java - a hand gun that does not break stealth (chage in BulletGun.java instead)
 
-9)<Half-way done> Take the Otiluke's Journal (Dolya Slate from Special Suprise PD), rename into Old Hunter's notebook.
-
-_ "Sweet Home" into "Traum des Jagers" </Half-way Done> (i.e done coding, map making later)
-
-_ Try to add the Hunter's Nightmare - "Der Albtraum des Jagers"
+"
 
 
 10) Finish the special shop
