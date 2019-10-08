@@ -69,27 +69,26 @@ public class Yharnamite extends NPC {
 
     public String[] TALK_TXT ={
 //(0) Gof'nn hupadgh Shub-Niggurath - Worshipper of Shub-Niggurath
-            "Iä! Shub-Niggurath! The Black Goat of the Woods with a Thousand Young! Please grant us rebirth and eternal life. Iä! Shub-Niggurath! ...Argh... Whos' out there? Don's interupt our chant like that, stranger. Off with you now.",
+            "Iä! Shub-Niggurath! The Black Goat of the Woods with a Thousand Young! Please grant us rebirth and eternal life. Iä! Shub-Niggurath! ...Argh... Whos' out there? Don's interupt our chant like that, stranger. Off with you now. Iä! Shub-Niggurath!",
 
 //(1) // Werewolf-infested house  //TODO: add WndWerewolfHouse.js
             " _You see a door sightly ajar... Do you open it?_",
 
 //(2) //Loran Brewery (German accent)
-            " Yes, Loran finest Brewery's here. But I'm off durink Jagd. You comen back later...  ",
+            "Heute Nacht ist die Nacht der Jagd... Wissen Sie es? Und I'm out of spezielle beerenfrucht. Unless you kan find shome, you comen back in die morgen.",
 
 //(3) //Empty house, toxic gas emitter	
             "_ You found the door slightly ajar. But upon reaching the door knob, an overwhelming stench leak out _",
 
-//(4) Female NPC with no quest #2	
-            "Ohh, I'm terribly sorry... There's no one home... I'm really, really sorry... So sorry for ya...",
+//(4) Hopeless woman	
+            "What does it matter? We've lost... We're all gonna die. Know that, and move on.",
 
-//(5) Yharnam brothel, encounter as male
-            " Your husband isn't here. I'm off during hunts!... Oh, I thought you were some angry housewives. I'm off during hunts. But if you are still...thirsty, darling. Come back in the morning.",
+//(5) School of Mensis's scholar
+            "Der Kosmos und der Himmel sind eins... Ah ha ha ha... ",
 
 //(6) POtshop
-            " Ia! Ia! Great Yog-Sothoth! Y'AI'NG'NGAHYOG-SOTHOTHH'EE-L'GEBF'AI THRODOGUAAAHH... Huh? Who's that? Oh, a customer... Our soup will be done soon... My apologize for this inconvinience. Come back soon, will ya?",
-
-
+             "",
+        
 //(7) Unnamed male NPC #1 GIVE SWORD
             "Lousy offcomer. I'll have no business with anyone while the hunt's on. Good luck staying alive till morning",
 
@@ -132,22 +131,24 @@ public class Yharnamite extends NPC {
 
     public String[] TALK_TXT2 ={
 //(0)  Gof'nn hupadgh Shub-Niggurath - Worshipper of Shub-Niggurath
-            " Iä! Shub-Niggurath! The Black Goat of the Woods with a Thousand Young! Please grant us rebirth...",
+            " Iä! Shub-Niggurath! ... Hmm, you again, stranger, in a night like this? Do you have the pass word?",
 
-//(1) Female NPC with no quest #1
-            " No ... It wasn't me... It were the rats! The rats in the wall",
+//(1) // Werewolf-infested house  //TODO: add WndWerewolfHouse.js
+            " _You see a door sightly ajar... Do you open it?_",
 
-//(2) Gascoigne's daughter
-            "Is it you again? And you are an adventurer? Mm... Then, please, can I ask you a small kindness? My dad went to Loran for the hunt, and rarely came back on his own so my mum and grand dad went to find him, and now they are gone, too. Can you please look for them? I'm home with my sister but we are so scared.",
 
-//(3) Rude unnamed NPC #1
-            "You again? Get out of my sight, you sicko, or I'll sic guards on you.",
+//(2) //Loran Brewery (German accent)
+            " Coming, you trunkenbold... Und I can't brew anythink now. Do you have any beerenfrucht? Blut Beerenfrucht, or as they often say, _Blood Berries_ If you bring me 15 Blut Beeren, I'll brew some ale for you. ",
 
-//(4) Female NPC with no quest #2
-            " I said there was nobody home. And we can't help you... Please, get away from us...",
+//(3) //Empty house, toxic gas emitter	
+            "_ You found the door slightly ajar. But upon reaching the door knob, an overwhelming stench leak out _",
 
-//(5) Yharnam brothel, encounter as male
-            "Oh, you seem desperate... But I'm off during hunts. Come back in the morning, hun.",
+//(4) Hopeless Woman
+            "You waste your time on me...  I'm infected... Just go away... *sob*",
+
+//(5) Menshis Scholar
+           "Ah, Kos ... Oder manche sagen: Kosmos ... Hörst du unsere Gebete? Nein, wir werden den Traum nicht aufgeben. Niemand kann uns fangen! Niemand kann uns jetzt aufhalten! ",  
+
 
 //(6) Zealot
             " Oh, you again? The soup's almost done... Just wait a wee bit longer.",
