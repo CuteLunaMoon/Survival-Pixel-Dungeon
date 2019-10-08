@@ -68,14 +68,14 @@ public class Yharnamite extends NPC {
 //TODO: questlines for these shut-in NPCs
 
     public String[] TALK_TXT ={
-//(0) Hungry folks
-            "Oh, are you an adventurer? May I ask you a favor? My family is running out of food. And we dare not go out on a night like this. So could you bring us 5 _rations of foood_ ? Thank you, and please becareful, kind adventurer.",
+//(0) Gof'nn hupadgh Shub-Niggurath - Worshipper of Shub-Niggurath
+            "Iä! Shub-Niggurath! The Black Goat of the Woods with a Thousand Young! Please grant us rebirth and eternal life. Iä! Shub-Niggurath! ...Argh... Whos' out there? Don's interupt our chant like that, stranger. Off with you now.",
 
-//(1) Female NPC with no quest #1	
-            "  No ... It wasn't me... It were the rats! The rats in the wall",
+//(1) // Werewolf-infested house  //TODO: add WndWerewolfHouse.js
+            " _You see a door sightly ajar... Do you open it?_",
 
-//(2) Gasscoigne's family 1st encounter
-            " Hmm? Who's that? Daddy? Mommy? Oh no. It's not mommy... I'm very sorry, my mom told me not to talk to strangers...",
+//(2) //Loran Brewery (German accent)
+            " I'm off durink Jagd. You comen back later. ",
 
 //(3) Rude unnamed male NPC #1	
             "Not from around here, are ya? An outsider, on the night of the hunt? You must be sick, mate. Get away from me now, go.",
@@ -131,8 +131,8 @@ public class Yharnamite extends NPC {
 
 
     public String[] TALK_TXT2 ={
-//(0) Hungry Folks 2nd txt
-            " Any luck finding the rations, kind adventurer?",
+//(0)  Gof'nn hupadgh Shub-Niggurath - Worshipper of Shub-Niggurath
+            " Iä! Shub-Niggurath! The Black Goat of the Woods with a Thousand Young! Please grant us rebirth...",
 
 //(1) Female NPC with no quest #1
             " No ... It wasn't me... It were the rats! The rats in the wall",
