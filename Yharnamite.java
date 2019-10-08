@@ -75,10 +75,10 @@ public class Yharnamite extends NPC {
             " _You see a door sightly ajar... Do you open it?_",
 
 //(2) //Loran Brewery (German accent)
-            " I'm off durink Jagd. You comen back later. ",
+            " Yes, Loran finest Brewery's here. But I'm off durink Jagd. You comen back later...  ",
 
-//(3) Rude unnamed male NPC #1	
-            "Not from around here, are ya? An outsider, on the night of the hunt? You must be sick, mate. Get away from me now, go.",
+//(3) //Empty house, toxic gas emitter	
+            "_ You found the door slightly ajar. But upon reaching the door knob, an overwhelming stench leak out _",
 
 //(4) Female NPC with no quest #2	
             "Ohh, I'm terribly sorry... There's no one home... I'm really, really sorry... So sorry for ya...",
