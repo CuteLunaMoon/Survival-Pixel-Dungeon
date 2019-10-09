@@ -68,14 +68,14 @@ public class Yharnamite extends NPC {
 //TODO: questlines for these shut-in NPCs
 
     public String[] TALK_TXT ={
-//(0) Gof'nn hupadgh Shub-Niggurath - Worshipper of Shub-Niggurath
+//(0) Gof'nn hupadgh Shub-Niggurath faction- Worshippers of Shub-Niggurath
             "Iä! Shub-Niggurath! The Black Goat of the Woods with a Thousand Young! Please grant us rebirth and eternal life. Iä! Shub-Niggurath! ...Argh... Whos' out there? Don's interupt our chant like that, stranger. Off with you now. Iä! Shub-Niggurath!",
 
 //(1) // Werewolf-infested house  //TODO: add WndWerewolfHouse.js
             " _You see a door sightly ajar... Do you open it?_",
 
 //(2) //Loran Brewery (German accent)
-            "Heute Nacht ist die Nacht der Jagd... Wissen Sie es? Und I'm out of spezielle beerenfrucht. Unless you kan find shome, you comen back in die morgen.",
+            "Heute Nacht ist die Nacht der Jagd... Wissen Sie es? Und I'm out of spezielle beerenfrucht. Unless you kan find some, you comen back in die morgen.",
 
 //(3) //Empty house, toxic gas emitter	
             "_ You found the door slightly ajar. But upon reaching the door knob, an overwhelming stench leak out _",
@@ -86,11 +86,11 @@ public class Yharnamite extends NPC {
 //(5) School of Mensis's scholar
             "Der Kosmos und der Himmel sind eins... Ah ha ha ha... ",
 
-//(6) POtshop
-             "",
+//(6) Blood-crystal Enhancer// TODO: add WndEnhancer.js
+             " Stop knocking. I'm coming...I don't reckon you from around here. Perchance you are a new hunter? Good. Then if you come across any odd Blood Crystals - the thing that crystalize when the blood dry out, bring them to me. I can infuse their power into your weapon... Heh, heh... Good luck",
         
-//(7) Unnamed male NPC #1 GIVE SWORD
-            "Lousy offcomer. I'll have no business with anyone while the hunt's on. Good luck staying alive till morning",
+//(7) Church Clinic, lower level
+            " ",
 
 //(8) Deceiver
             "Oh, hello there. I'm so sorry I can't open this door. But wait, wait a minute. Do you have Blood vials? If you bring me some of those sweet nectars, I think I'll even let you in. It's so cold and lonely in here for a maiden for me to handle...",
