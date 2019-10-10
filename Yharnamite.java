@@ -81,32 +81,32 @@ public class Yharnamite extends NPC {
             "_ You found the door slightly ajar. But upon reaching the door knob, an overwhelming stench leak out _",
 
 //(4) Hopeless woman	
-            "What does it matter? We've lost... We're all gonna die. Know that, and move on.",
+            "What does it matter? We've lost... Old Loran is overran... The streets are filled with corpses... We're all gonna die. Know that, and move on.",
 
 //(5) School of Mensis's scholar
             "Der Kosmos und der Himmel sind eins... Ah ha ha ha... ",
 
 //(6) Blood-crystal Enhancer// TODO: add WndEnhancer.js
-             " Stop knocking. I'm coming...I don't reckon you from around here. Perchance you are a new hunter? Good. Then if you come across any odd Blood Crystals - the thing that crystalize when the blood dry out, bring them to me. I can infuse their power into your weapon... Heh, heh... Good luck",
+             " Stop knocking. I'm coming...I don't reckon you from around here. Perchance you are a new hunter? Good... I haven't seen many new faces these days... If you come across any odd Blood Crystals - the thing that crystalize when the blood dry out, bring them to me. I can infuse their power into your weapon... for a price, of course. Heh, heh... Good luck and Good hunting",
         
 //(7) Church Clinic, lower level
-            " Rea...Really, are you still normal? A sane hunter amidst the hunt, what a miracle... Why, ye... yes, this is the Churh's clinic Loran branch... Gui... guiding and asisting the hunters are the church's mission. But... but I'm afraid I can't open this door. Tonight too many hunters and church servants have descend into beasthood and madness, in... including our headmistress... However, I could still sell you some medkits or if there is anything that can be done.  ",
+            " W-who's there? Oh... A sane hunter amidst the hunt, what a miracle... Why, ye... yes, this is the Churh's clinic in Old Loran... Gui... guiding and asisting the hunters are the church's mission. But... but I'm afraid I can't open this door. Tonight too many hunters and church servants have descended into beasthood and madness, in... including our head mistress... However, I could still sell you some medkits and medicine... A-and here, take this supply pack. It was intended for hunter Elios, but he didn't make it. I hope it could help you stay alive longer... Good luck",
 
-//(8) Deceiver
-            "Oh, hello there. I'm so sorry I can't open this door. But wait, wait a minute. Do you have Blood vials? If you bring me some of those sweet nectars, I think I'll even let you in. It's so cold and lonely in here for a maiden for me to handle...",
+//(8) //unnamed female #1
+            "Leave us be...",
 
 
-//(9) Rude unnamed male NPC #2
-            " Wretched outsider. I hope they have your head before the morning",
+//(9) // madman - induce Stress dmg (quoting H.P. Lovecraft writing)
+            " What is dead may eternal lie. And in strange aeon even death may die...",
 
-//(10) Unnamed male NPC #2
-            " What's that? ...I...I can't help you, apologies. Good night and good luck",
+//(10)// Locked house
+            " _No response_",
 
-//(11) Unnamed male NPC #3
-            "Niemand ist hier krank. Uns geht es gut... Gute Jagd.",
+//(11)//Madman with crossbow - attack on first interaction
+            " Beast... A foul beast!",
 
-//(12) Deutch Gentlemen
-            "ver bist du? An ouseiter? Nein, nein... Vee don't hafe anythink to do vith ya, trot along, vill ya?",
+//(12) madmen, with quest (100 sanity and below required)
+            " ",
 
 //(13) Rude Female NPC #1
             "What is it? I smell that... You must be a hunter. And not one of ours, either. Well, get lost, and don't come back!",
