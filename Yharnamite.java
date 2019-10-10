@@ -90,7 +90,7 @@ public class Yharnamite extends NPC {
              " Stop knocking. I'm coming...I don't reckon you from around here. Perchance you are a new hunter? Good. Then if you come across any odd Blood Crystals - the thing that crystalize when the blood dry out, bring them to me. I can infuse their power into your weapon... Heh, heh... Good luck",
         
 //(7) Church Clinic, lower level
-            " ",
+            " Rea...Really, are you still normal? A sane hunter amidst the hunt, what a miracle... Why, ye... yes, this is the Churh's clinic Loran branch... Gui... guiding and asisting the hunters are the church's mission. But... but I'm afraid I can't open this door. Tonight too many hunters and church servants have descend into beasthood and madness, in... including our headmistress... However, I could still sell you some medkits or if there is anything that can be done.  ",
 
 //(8) Deceiver
             "Oh, hello there. I'm so sorry I can't open this door. But wait, wait a minute. Do you have Blood vials? If you bring me some of those sweet nectars, I think I'll even let you in. It's so cold and lonely in here for a maiden for me to handle...",
