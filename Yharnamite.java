@@ -108,18 +108,20 @@ public class Yharnamite extends NPC {
 //(12) madmen, with quest (100 sanity and below required)
             " ",
 
-//(13) Rude Female NPC #1
-            "What is it? I smell that... You must be a hunter. And not one of ours, either. Well, get lost, and don't come back!",
+//(13)//Yet Another Empty house, toxic gas emitter	
+            "_ You found the door slightly ajar. But upon reaching the door knob, an overwhelming stench leak out _",
+        
+//(14)		Pixelmart (Sell potions & scrolls - unlimited, sell 3 oil urns at sky high price / buy stuff)
+            "Oh hello, weary traveller. Yes, you have come to the right place. This is Pixelmart. Well, we are off during hunts and I can't let you in, but if you want to buy or sell anything, just tell me. Note that we can only trade goods that fits through this privacy window. ",
 
-//(14)	the rude archer
-            " Sick creature, don't pretend you are normal. Away with you, now!",
-
+ 
 //(15)  RAT IN THE WALL
             "Entschuldigen Sie! Es ist niemand zu Hause...",
 
 //(17) 	Pixelmart
             "Oh hello, weary traveller. Yes, you have come to the right place. This is Pixelmart. Well, we are off during hunts and I can't let you in, but if you want to buy or sell anything, just tell me. Note that we can only trade goods that fits through this privacy window. ",
 
+        
 //(18)  Unnamed male NPC #4	
             "What's zat? Oh, we're fine here mate. All's in tip top shape, not even a sniff of cold. Gute Jagd.",
 
@@ -150,12 +152,12 @@ public class Yharnamite extends NPC {
            "Ah, Kos ... Oder manche sagen: Kosmos ... Hörst du unsere Gebete? Nein, wir werden den Traum nicht aufgeben. Niemand kann uns fangen! Niemand kann uns jetzt aufhalten! ",  
 
 
-//(6) Zealot
-            " Oh, you again? The soup's almost done... Just wait a wee bit longer.",
+//(6) Blood-crystal Enhancer// TODO: OPEN WndEnhancer.js
+            " ",
 
 
-//(7) Unnamed male NPC #1 ==> Give Short Sword +1
-            " Tsk... You again? What do you want this time? I can't open this door. It's too dangerous for my family. And you better go hiding now before they find you... Hey! Wait a minute...Tsk... I can't let you go like this... Take this sword, I have little use of it for now. At night like this, the Eastern quarter is boarded up, you should try the canal system. ",
+//(7)  Church Clinic, lower level // TODO: OPEN WndChurchClinicLowerLoran
+            " ",
 
 //(8) Deceiver
             "Oh, hello there. I'm so sorry I can't open this door. But wait, wait a minute. Do you have Blood vials? If you bring me some of those sweet nectars, I think I'll even let you in. It's so cold and lonely in here for a maiden for me to handle...",
